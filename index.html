@@ -27,7 +27,7 @@
     header{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); background:rgba(255,255,255,.85); border-bottom:1px solid var(--line)}
     .bar{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0}
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{width:40px; height:40px; border-radius:12px; background:radial-gradient(100% 100% at 30% 30%, var(--brand), var(--brand-2)); display:grid; place-items:center; color:var(--brand-ink); font-weight:800}
+    .logo{width:40px;height:40px;border-radius:12px;display:block}
     .brand-name{font-weight:700; letter-spacing:.2px}
     nav a{display:inline-block; padding:10px 12px; text-decoration:none; opacity:.9}
     nav a:hover{color:var(--brand)}
@@ -35,13 +35,13 @@
     @media (max-width:900px){
       nav{display:none}
       .menu-btn{display:inline-block}
-      .mobile{display:none; position:fixed; inset:56px 0 auto 0; background:rgba(14,17,20,.97); border-bottom:1px solid var(--line)}
+      .mobile{display:none; position:fixed; inset:56px 0 auto 0; background:rgba(255,255,255,.98); border-bottom:1px solid var(--line)}
       .mobile a{display:block; padding:14px 16px; border-top:1px solid var(--line)}
     }
     /* Hero */
     .hero{padding:84px 0 64px; border-bottom:1px solid var(--line); background:
-      radial-gradient(800px 400px at 15% -10%, rgba(42,163,107,.18), transparent),
-      radial-gradient(700px 340px at 90% -20%, rgba(63,179,140,.14), transparent)}
+      radial-gradient(800px 400px at 15% -10%, rgba(42,163,107,.10), transparent),
+      radial-gradient(700px 340px at 90% -20%, rgba(63,179,140,.08), transparent)}
     h1{font-size: clamp(34px, 6vw, 56px); margin:0 0 8px}
     .lead{color:var(--muted); max-width:760px}
     .cta{display:flex; gap:12px; margin-top:22px}
@@ -71,12 +71,14 @@
     summary{cursor:pointer; font-weight:600}
     footer{border-top:1px solid var(--line); padding:22px 0; color:var(--muted)}
   </style>
+  <link rel="icon" href="assets/climate-quest-favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/climate-quest-logo-icon.svg" />
 </head>
 <body>
   <header>
     <div class="wrap bar">
       <div class="brand">
-        <div class="logo">CQ</div>
+        <img class="logo" src="assets/climate-quest-logo-icon.svg" alt="Climate Quest logo" width="40" height="40" />
         <span class="brand-name">Climate Quest</span>
       </div>
       <nav aria-label="primary">
@@ -119,7 +121,6 @@
       <div class="wrap grid-2">
         <div>
           <h2>Who we are</h2>
-          <!-- Replace this paragraph with your Base44 About text -->
           <p>Climate Quest is a community-led initiative focused on practical, local action. We design bite-sized challenges that reward environmentally sustainable practices and make climate learning a team effort.</p>
           <div class="kpis">
             <div class="kpi"><div style="font-size:28px; font-weight:800">10–30</div><div style="color:var(--muted)">Target age</div></div>
@@ -143,7 +144,6 @@
       <div class="wrap grid-2">
         <div>
           <h2>How it works</h2>
-          <!-- Replace with your Base44 steps -->
           <ol class="steps">
             <li>Gather your group and set a timer.</li>
             <li>Print the cards and score sheet.</li>
@@ -167,7 +167,6 @@
     <section id="watch">
       <div class="wrap">
         <h2>Watch the intro</h2>
-        <!-- Swap VIDEO_ID with your YouTube or Vimeo ID -->
         <div class="video">
           <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Climate Quest Intro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
@@ -178,7 +177,6 @@
     <section id="rules" class="alt">
       <div class="wrap">
         <h2>Game rules (snapshot)</h2>
-        <!-- Replace with your Base44 rules summary -->
         <ul>
           <li>Play in rounds. Each round starts by drawing a card.</li>
           <li>Agree on how you’ll complete the challenge safely.</li>
@@ -218,7 +216,6 @@
     <section id="faq" class="alt">
       <div class="wrap">
         <h2>FAQ</h2>
-        <!-- Replace with your Base44 FAQ content -->
         <details>
           <summary>Is this free?</summary>
           <p>Yes. You can print and share the kit with attribution.</p>
@@ -239,7 +236,6 @@
       <div class="wrap grid-2">
         <div>
           <h2>Contact</h2>
-          <!-- Swap this with your real contact details or a mailto link -->
           <p>Email: <a href="mailto:climitquest@gmail.com">climitquest@gmail.com</a></p>
           <p>Social: add links to Instagram, TikTok, or YouTube.</p>
         </div>
