@@ -1,54 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Climate Quest</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Climate Quest — learn, play, and take climate action together." />
+  <meta name="theme-color" content="#1f6f43" />
+  <meta property="og:title" content="Climate Quest" />
+  <meta property="og:description" content="Learn, play, and take climate action together. Download the free kit." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-domain-here" />
+  <meta property="og:image" content="/assets/og-image.jpg" />
+  <style>
+    :root{
+      --bg:#0e1114; --bg-soft:#12171c; --card:#161c22; --text:#e9eef3; --muted:#a9bac6; --line:#243240;
+      --brand:#2aa36b; --brand-2:#3fb38c; --brand-ink:#0b1b12; --danger:#ff5c5c;
+      --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:var(--text); background:linear-gradient(180deg,#0b0f13,#0e1114 20%,#0e1114) fixed;}
+    a{color:inherit}
+    .wrap{max-width:1120px; margin:0 auto; padding:0 16px}
+    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); background:rgba(14,17,20,.7); border-bottom:1px solid var(--line)}
+    .bar{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{width:40px; height:40px; border-radius:12px; background:radial-gradient(100% 100% at 30% 30%, var(--brand), var(--brand-2)); display:grid; place-items:center; color:var(--brand-ink); font-weight:800}
+    .brand-name{font-weight:700; letter-spacing:.2px}
+    nav a{display:inline-block; padding:10px 12px; text-decoration:none; opacity:.9}
+    nav a:hover{color:var(--brand)}
+    .menu-btn{display:none; border:1px solid var(--line); background:var(--card); color:var(--text); border-radius:10px; padding:8px 10px}
+    @media (max-width:900px){
+      nav{display:none}
+      .menu-btn{display:inline-block}
+      .mobile{display:none; position:fixed; inset:56px 0 auto 0; background:rgba(14,17,20,.97); border-bottom:1px solid var(--line)}
+      .mobile a{display:block; padding:14px 16px; border-top:1px solid var(--line)}
+    }
+    .hero{padding:84px 0 64px; border-bottom:1px solid var(--line); background:
+      radial-gradient(800px 400px at 15% -10%, rgba(42,163,107,.18), transparent),
+      radial-gradient(700px 340px at 90% -20%, rgba(63,179,140,.14), transparent)}
+    h1{font-size: clamp(34px, 6vw, 56px); margin:0 0 8px}
+    .lead{color:var(--muted); max-width:760px}
+    .cta{display:flex; gap:12px; margin-top:22px}
+    .btn{display:inline-block; text-decoration:none; font-weight:700; padding:12px 16px; border-radius:12px}
+    .btn.primary{background:var(--brand); color:var(--brand-ink)}
+    .btn.secondary{background:var(--card); border:1px solid var(--line)}
+    section{padding:64px 0}
+    .alt{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+    h2{font-size: clamp(22px, 3vw, 32px); margin:0 0 14px}
+    p{line-height:1.6}
+    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:24px}
+    @media (max-width:900px){ .grid-2{grid-template-columns:1fr} }
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
+    ol.steps{padding-left:20px}
+    ul{padding-left:20px}
+    .video{position:relative; width:100%; aspect-ratio:16/9; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+    .video iframe{width:100%; height:100%; display:block}
+    .downloads{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+    @media (max-width:900px){ .downloads{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:560px){ .downloads{grid-template-columns:1fr} }
+    .download{display:block; text-decoration:none}
+    .download.card:hover{border-color:var(--brand)}
+    .kpis{display:flex; gap:16px; flex-wrap:wrap}
+    .kpi{flex:1 1 160px; text-align:center; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px}
+    details{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:12px 14px; margin:10px 0}
+    summary{cursor:pointer; font-weight:600}
+    footer{border-top:1px solid var(--line); padding:22px 0; color:var(--muted)}
+  </style>
 </head>
 <body>
   <header>
-    <h1>Climate Quest</h1>
-    <nav>
-      <a href="#about">About</a> |
-      <a href="#how">How it works</a> |
-      <a href="#watch">Watch</a> |
-      <a href="#rules">Rules</a> |
+    <div class="wrap bar">
+      <div class="brand">
+        <div class="logo">CQ</div>
+        <span class="brand-name">Climate Quest</span>
+      </div>
+      <nav aria-label="primary">
+        <a href="#about">About</a>
+        <a href="#how">How it works</a>
+        <a href="#watch">Watch</a>
+        <a href="#rules">Rules</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-btn" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+    </div>
+    <div id="mobile-nav" class="mobile" role="dialog" aria-modal="true" aria-label="Mobile Menu">
+      <a href="#about">About</a>
+      <a href="#how">How it works</a>
+      <a href="#watch">Watch</a>
+      <a href="#rules">Rules</a>
       <a href="#downloads">Downloads</a>
-    </nav>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
   </header>
+
   <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>Play. Learn. Take Action.</h1>
+        <p class="lead">A simple game to help friends, families, and youth groups turn climate education into real-world impact.</p>
+        <div class="cta">
+          <a class="btn primary" href="#downloads">Get the kit</a>
+          <a class="btn secondary" href="#watch">Watch the intro</a>
+        </div>
+      </div>
+    </section>
+
     <section id="about">
-      <h2>Who we are</h2>
-      <p>Climate Quest is a fun educational game to inspire climate action.</p>
+      <div class="wrap grid-2">
+        <div>
+          <h2>Who we are</h2>
+          <p>Climate Quest is a community-led initiative focused on practical, local action. We design bite-sized challenges that reward environmentally sustainable practices and make climate learning a team effort.</p>
+          <div class="kpis">
+            <div class="kpi"><div style="font-size:28px; font-weight:800">10–30</div><div style="color:var(--muted)">Target age</div></div>
+            <div class="kpi"><div style="font-size:28px; font-weight:800">3–8</div><div style="color:var(--muted)">Players per group</div></div>
+            <div class="kpi"><div style="font-size:28px; font-weight:800">Free</div><div style="color:var(--muted)">Open kit</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">What’s inside the kit</h3>
+          <ul>
+            <li>Rules and facilitator guide (PDF)</li>
+            <li>Printable card deck (PDF)</li>
+            <li>Score sheet (PDF)</li>
+          </ul>
+        </div>
+      </div>
     </section>
-    <section id="how">
-      <h2>How it works</h2>
-      <p>Gather your group, watch the intro video, read the rules, and play!</p>
+
+    <section id="how" class="alt">
+      <div class="wrap grid-2">
+        <div>
+          <h2>How it works</h2>
+          <ol class="steps">
+            <li>Gather your group and set a timer.</li>
+            <li>Print the cards and score sheet.</li>
+            <li>Watch the short intro video together.</li>
+            <li>Draw a card and complete the challenge.</li>
+            <li>Score points for teamwork and impact.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">What you need</h3>
+          <ul>
+            <li>Printed deck + rules (PDF)</li>
+            <li>Score sheet (PDF)</li>
+            <li>Pens, phone for timing/photos</li>
+          </ul>
+        </div>
+      </div>
     </section>
+
     <section id="watch">
-      <h2>Watch the intro</h2>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+      <div class="wrap">
+        <h2>Watch the intro</h2>
+        <div class="video">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Climate Quest Intro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
     </section>
-    <section id="rules">
-      <h2>Game Rules (Snapshot)</h2>
-      <ul>
-        <li>Draw a challenge card each round</li>
-        <li>Earn points for teamwork and impact</li>
-      </ul>
+
+    <section id="rules" class="alt">
+      <div class="wrap">
+        <h2>Game rules (snapshot)</h2>
+        <ul>
+          <li>Play in rounds. Each round starts by drawing a card.</li>
+          <li>Agree on how you’ll complete the challenge safely.</li>
+          <li>Earn points for difficulty, teamwork, and real-world impact.</li>
+          <li>Bonus points for sharing proof or teaching others.</li>
+        </ul>
+      </div>
     </section>
+
     <section id="downloads">
-      <h2>Downloads</h2>
-      <ul>
-        <li><a href="downloads/climate-quest-rules.pdf" download>Rules PDF</a></li>
-        <li><a href="downloads/climate-quest-deck.pdf" download>Card Deck PDF</a></li>
-        <li><a href="downloads/climate-quest-score-sheet.pdf" download>Score Sheet PDF</a></li>
-        <li><a href="downloads/facilitator-guide.pdf" download>Facilitator Guide PDF</a></li>
-      </ul>
+      <div class="wrap">
+        <h2>Downloads</h2>
+        <p class="lead" style="margin-bottom:18px">Everything you need to play. Add your files to a <code>/downloads</code> folder in your repo and update these links if you change filenames.</p>
+        <div class="downloads">
+          <a class="download card" href="downloads/climate-quest-rules.pdf" download>
+            <h3 style="margin-top:0">Rules (PDF)</h3>
+            <p>Full rules with examples and scoring.</p>
+          </a>
+          <a class="download card" href="downloads/climate-quest-deck.pdf" download>
+            <h3 style="margin-top:0">Card deck (PDF)</h3>
+            <p>Printable A4/Letter format.</p>
+          </a>
+          <a class="download card" href="downloads/climate-quest-score-sheet.pdf" download>
+            <h3 style="margin-top:0">Score sheet (PDF)</h3>
+            <p>Track teams and points.</p>
+          </a>
+          <a class="download card" href="downloads/facilitator-guide.pdf" download>
+            <h3 style="margin-top:0">Facilitator guide (PDF)</h3>
+            <p>Tips for running sessions.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="alt">
+      <div class="wrap">
+        <h2>FAQ</h2>
+        <details>
+          <summary>Is this free?</summary>
+          <p>Yes. You can print and share the kit with attribution.</p>
+        </details>
+        <details>
+          <summary>Can we use this in schools?</summary>
+          <p>Absolutely. It was designed for classrooms and youth groups.</p>
+        </details>
+        <details>
+          <summary>Can we submit results?</summary>
+          <p>For now, it’s a local game. If submissions open later, we’ll announce it here.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap grid-2">
+        <div>
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:climitquest@gmail.com">climitquest@gmail.com</a></p>
+          <p>Social: add links to Instagram, TikTok, or YouTube.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Want updates?</h3>
+          <p>Add a newsletter link or a simple Google Form later. For now, keep it simple.</p>
+        </div>
+      </div>
     </section>
   </main>
+
   <footer>
-    <p>&copy; 2025 Climate Quest</p>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:12px">
+      <small>&copy; <span id="year"></span> Climate Quest</small>
+      <small style="color:var(--muted)"><a href="#">License</a> · <a href="#">Privacy</a></small>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.querySelector('.menu-btn');
+    const sheet = document.getElementById('mobile-nav');
+    if(btn){
+      btn.addEventListener('click', ()=>{
+        const open = sheet.style.display === 'block';
+        sheet.style.display = open ? 'none' : 'block';
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+    }
+  </script>
 </body>
 </html>
